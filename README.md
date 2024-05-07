@@ -37,12 +37,11 @@ I implemented a button to delete a plan if a user chooses, as well as update it 
 
 ## Screenshots
 
-![Alt text](HomeScreen.png?raw=true "Home Screen")
-<img src="HomeScreen.png" width="200" />
-![Alt text](BlankQuizScreen.png?raw=true "Blank Quiz Screen")
-![Alt text](FilledQuizScreenOne.png?raw=true "First Half Filled Quiz")
-![Alt text](FilledQuizScreenTwo.png?raw=true "Second Half Filled Quiz")
-![Alt text](DietPlanScreen.png?raw=true "Diet Plan Screen")
-![Alt text](DietPlanResponse.png?raw=true "Diet Plan AI Response")
-![Alt text](ExercisePlanScreen.png?raw=true "Exercise Plan Screen")
-![Alt text](ExercisePlanResponse.png?raw=true "Exercise Plan AI Response")
+<img src="HomeScreen.png" width="350" />
+<img src="BlankQuizScreen.png" width="350" />
+<img src="FilledQuizScreenOne.png" width="350" />
+<img src="FilledQuizScreenTwo.png" width="350" />
+<img src="DietPlanScreen.png" width="350" />
+<img src="DietPlanResponse.png" width="350" />
+<img src="ExercisePlanScreen.png" width="350" />
+<img src="ExercisePlanResponse.png" width="350" />
