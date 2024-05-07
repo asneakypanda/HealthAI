@@ -55,20 +55,20 @@ export function DemoNavigator() {
         name="DemoShowroom"
         component={DemoShowroomScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.componentsTab"),
+          tabBarLabel: ("Home"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused ? colors.tint : undefined} size={30} />
+            <Icon icon="home" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
 
       <Tab.Screen
         name="DemoCommunity"
-        component={DemoCommunityScreen}
+        component={DemoCommunityScreen as React.ComponentType}
         options={{
-          tabBarLabel: translate("demoNavigator.communityTab"),
+          tabBarLabel: ("Diet"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused ? colors.tint : undefined} size={30} />
+            <Icon icon="food" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
@@ -77,10 +77,9 @@ export function DemoNavigator() {
         name="DemoPodcastList"
         component={DemoPodcastListScreen}
         options={{
-          tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
-          tabBarLabel: translate("demoNavigator.podcastListTab"),
+          tabBarLabel: ("Exercise"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.tint : undefined} size={30} />
+            <Icon icon="exercise" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
@@ -89,9 +88,9 @@ export function DemoNavigator() {
         name="DemoDebug"
         component={DemoDebugScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.debugTab"),
+          tabBarLabel: ("Settings"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
+            <Icon icon="settings" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />

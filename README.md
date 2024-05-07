@@ -1,164 +1,47 @@
-# Welcome to your new ignited app!
+# HealthAI
 
-[![CircleCI](https://circleci.com/gh/infinitered/ignite.svg?style=svg)](https://circleci.com/gh/infinitered/ignite)
+## Purpose
 
-## The latest and greatest boilerplate for Infinite Red opinions
+This project was made using Infinite Red's Ignite boilerplate as the final project for my Prompt Engineering class. We were tasked with implementing an AI model's API into either a web app or mobile app. I decided to choose a mobile app since I have never made one before this class and wanted to gain some experience making one. I chose the Ignite boilerplate as I felt it was a good base layout to help me understand the structure and flow of a mobile application. The usage of expo was something I was drawn to as well since it would allow me to develop for both android and iOS. The app is entirely based in the frontend.
 
-This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way to test bleeding-edge changes to our React Native stack.
+## What This App Does
 
-Currently includes:
+This app starts on a simple home screen that has a button the user taps to take a quick quiz. A modal appears and the user inputs their responses. After they tap submit, ChatGPT is called through their API and the engineered prompt pattern outputs an exercise and diet plan based on the users responses to the 'Diet' and 'Exercise' screen in a container (I didn't refactor the name of the screens from the boilerplate, so they are titled DemoCommunityScreen and DemoPodcastListScreen respectively). When the container is tapped, a modal opens with ChatGPT's response in an editable text box that the user can change and save to their liking. Only one plan exists at a time.
 
-- React Native
-- React Navigation
-- MobX State Tree
-- TypeScript
-- And more!
+## What I Changed/Added from Ignite
 
-## Quick Start
+**Files Edited:**
+- package.json (added neccesary packages for modals)
+- package-lock.json (added neccesary packages for modals)
+- app.tsx (added provider for AI response and the plan modal)
+- DemoPodcastListScreen.tsx (Exercise Screen, layout of code is similar to boilerplate, but all code inside this file is from me)
+- DemoCommunityScreen.tsx (Diet Screen, layout of code is similar to boilerplate, but all code inside this file is from me)
+- DemoShowroomScreen.tsx (Home Screen, still has all its original components and code. Only thing changed is title of screen)
+- DemoIcon.tsx (This is where the "Take Quiz Now!" button is rendered, as DemoIcon.tsx is the top item on the DemoShowroomScreen.tsx)
+- DemoNavigator.tsx (Where code was changed for the icon and names of tabs)
+- Icon.tsx (added food, home, and exercise icons to iconRegistry)
 
-The Ignite boilerplate project's structure will look similar to this:
+**Files Added:**
+- home.png (Home tab icon)
+- food.png (Diet tab icon)
+- exercise.png (Exercise tab icon)
+- Quiz.tsx (Where most of the logic is housed for this project. Contains the logic for the quiz input form, what happens when the user taps submit, and the parsing of AI response to be passed to Diet and Exercise screens)
+- PlansContext.tsx (Creates the provider for the modal that is used between the Diet and Exercise Screens)
+- Plan.tsx (Logic for the plan modal and how it appears on the screen when a user taps the plan)
+- openAiService.tsx (Logic for calling ChatGPT API)
+- AIResponseContext.tsx (Creates the provider and logic for rendering the AI response thru app.tsx)
 
-```
-ignite-project
-├── app
-│   ├── components
-│   ├── config
-│   ├── i18n
-│   ├── models
-│   ├── navigators
-│   ├── screens
-│   ├── services
-│   ├── theme
-│   ├── utils
-│   └── app.tsx
-├── assets
-│   ├── icons
-│   └── images
-├── test
-│   ├── __snapshots__
-│   ├── mockFile.ts
-│   └── setup.ts
-├── README.md
-├── android
-│   ├── app
-│   ├── build.gradle
-│   ├── gradle
-│   ├── gradle.properties
-│   ├── gradlew
-│   ├── gradlew.bat
-│   ├── keystores
-│   └── settings.gradle
-├── ignite
-│   └── templates
-|       |── app-icon
-│       ├── component
-│       ├── model
-│       ├── navigator
-│       └── screen
-├── index.js
-├── ios
-│   ├── IgniteProject
-│   ├── IgniteProject-tvOS
-│   ├── IgniteProject-tvOSTests
-│   ├── IgniteProject.xcodeproj
-│   └── IgniteProjectTests
-├── .env
-└── package.json
+## What I Would Change
 
-```
+I implemented a button to delete a plan if a user chooses, as well as update it in the console log that the plan has been deleted, but it doesn't actually delete the plan at all. When a user taps the save button on the modal, it is the same as if they tap the 'cancel' button, it still saves their edits regardless. I would fix these things, add a backend so that multiple plans can be added, add persistence, as well as clean up the user experience and home screen from boilerplate clutter.
 
-### ./app directory
+## Screenshots
 
-Included in an Ignite boilerplate project is the `app` directory. This is a directory you would normally have to create when using vanilla React Native.
-
-The inside of the `app` directory looks similar to the following:
-
-```
-app
-├── components
-├── config
-├── i18n
-├── models
-├── navigators
-├── screens
-├── services
-├── theme
-├── utils
-└── app.tsx
-```
-
-**components**
-This is where your reusable components live which help you build your screens.
-
-**i18n**
-This is where your translations will live if you are using `react-native-i18n`.
-
-**models**
-This is where your app's models will live. Each model has a directory which will contain the `mobx-state-tree` model file, test file, and any other supporting files like actions, types, etc.
-
-**navigators**
-This is where your `react-navigation` navigators will live.
-
-**screens**
-This is where your screen components will live. A screen is a React component which will take up the entire screen and be part of the navigation hierarchy. Each screen will have a directory containing the `.tsx` file, along with any assets or other helper files.
-
-**services**
-Any services that interface with the outside world will live here (think REST APIs, Push Notifications, etc.).
-
-**theme**
-Here lives the theme for your application, including spacing, colors, and typography.
-
-**utils**
-This is a great place to put miscellaneous helpers and utilities. Things like date helpers, formatters, etc. are often found here. However, it should only be used for things that are truly shared across your application. If a helper or utility is only used by a specific component or model, consider co-locating your helper with that component or model.
-
-**app.tsx** This is the entry point to your app. This is where you will find the main App component which renders the rest of the application.
-
-### ./assets directory
-
-This directory is designed to organize and store various assets, making it easy for you to manage and use them in your application. The assets are further categorized into subdirectories, including `icons` and `images`:
-
-```
-assets
-├── icons
-└── images
-```
-
-**icons**
-This is where your icon assets will live. These icons can be used for buttons, navigation elements, or any other UI components. The recommended format for icons is PNG, but other formats can be used as well.
-
-Ignite comes with a built-in `Icon` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-Icon.md).
-
-**images**
-This is where your images will live, such as background images, logos, or any other graphics. You can use various formats such as PNG, JPEG, or GIF for your images.
-
-Another valuable built-in component within Ignite is the `AutoImage` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-AutoImage.md).
-
-How to use your `icon` or `image` assets:
-
-```
-import { Image } from 'react-native';
-
-const MyComponent = () => {
-  return (
-    <Image source={require('../assets/images/my_image.png')} />
-  );
-};
-```
-
-### ./ignite directory
-
-The `ignite` directory stores all things Ignite, including CLI and boilerplate items. Here you will find templates you can customize to help you get started with React Native.
-
-### ./test directory
-
-This directory will hold your Jest configs and mocks.
-
-## Running Maestro end-to-end tests
-
-Follow our [Maestro Setup](https://ignitecookbook.com/docs/recipes/MaestroSetup) recipe from the [Ignite Cookbook](https://ignitecookbook.com/)!
-
-## Previous Boilerplates
-
-- [2018 aka Bowser](https://github.com/infinitered/ignite-bowser)
-- [2017 aka Andross](https://github.com/infinitered/ignite-andross)
-- [2016 aka Ignite 1.0](https://github.com/infinitered/ignite-ir-boilerplate-2016)
+![Alt text](HomeScreen.png?raw=true "Home Screen")
+![Alt text](BlankQuizScreen.png?raw=true "Blank Quiz Screen")
+![Alt text](FilledQuizScreenOne.png?raw=true "First Half Filled Quiz")
+![Alt text](FilledQuizScreenTwo.png?raw=true "Second Half Filled Quiz")
+![Alt text](DietPlanScreen.png?raw=true "Diet Plan Screen")
+![Alt text](DietPlanResponse.png?raw=true "Diet Plan AI Response")
+![Alt text](ExercisePlanScreen.png?raw=true "Exercise Plan Screen")
+![Alt text](ExercisePlanResponse.png?raw=true "Exercise Plan AI Response")

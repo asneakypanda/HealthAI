@@ -9,7 +9,6 @@ import { DemoTabParamList, DemoTabScreenProps } from "../../navigators/DemoNavig
 import { colors, spacing } from "../../theme"
 import { useSafeAreaInsetsStyle } from "../../utils/useSafeAreaInsetsStyle"
 import * as Demos from "./demos"
-import { DrawerIconButton } from "./DrawerIconButton"
 
 const logo = require("../../../assets/images/logo.png")
 
@@ -172,8 +171,8 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
           </View>
         )}
       >
-        <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$screenContainer}>
-          <DrawerIconButton onPress={toggleDrawer} />
+        <Screen preset="scroll" contentContainerStyle={$container} safeAreaEdges={["top"]}>
+          
 
           <SectionList
             ref={listRef}
@@ -184,28 +183,25 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
             renderSectionFooter={() => <View style={$demoUseCasesSpacer} />}
             ListHeaderComponent={
               <View style={$heading}>
-                <Text preset="heading" tx="demoShowroomScreen.jumpStart" />
+                <Text preset="heading" text="Welcome! Please take the quiz below to start:" style={$title}/>
               </View>
             }
             onScrollToIndexFailed={scrollToIndexFailed}
-            renderSectionHeader={({ section }) => {
-              return (
-                <View>
-                  <Text preset="heading" style={$demoItemName}>
-                    {section.name}
-                  </Text>
-                  <Text style={$demoItemDescription}>{section.description}</Text>
-                </View>
-              )
-            }}
+            
           />
         </Screen>
       </Drawer>
     )
   }
 
-const $screenContainer: ViewStyle = {
-  flex: 1,
+
+const $title: TextStyle = {
+  marginBottom: spacing.sm,
+}
+
+const $container: ViewStyle = {
+  paddingTop: spacing.lg + spacing.xl,
+  paddingHorizontal: spacing.lg,
 }
 
 const $drawer: ViewStyle = {
@@ -242,14 +238,7 @@ const $menuContainer: ViewStyle = {
   paddingTop: spacing.lg,
 }
 
-const $demoItemName: TextStyle = {
-  fontSize: 24,
-  marginBottom: spacing.md,
-}
 
-const $demoItemDescription: TextStyle = {
-  marginBottom: spacing.xxl,
-}
 
 const $demoUseCasesSpacer: ViewStyle = {
   paddingBottom: spacing.xxl,

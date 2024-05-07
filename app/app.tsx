@@ -29,7 +29,9 @@ import * as storage from "./utils/storage"
 import { customFontsToLoad } from "./theme"
 import Config from "./config"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { AIResponseProvider } from '/Users/ethantarrer/HealthAI/app/components/AIResponseContext';
 import { ViewStyle } from "react-native"
+import { PlansProvider } from "./components/PlansContext"
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
 
@@ -101,11 +103,15 @@ function App(props: AppProps) {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ErrorBoundary catchErrors={Config.catchErrors}>
         <GestureHandlerRootView style={$container}>
+          <AIResponseProvider>
+          <PlansProvider>
           <AppNavigator
             linking={linking}
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
           />
+          </PlansProvider>
+          </AIResponseProvider>
         </GestureHandlerRootView>
       </ErrorBoundary>
     </SafeAreaProvider>
