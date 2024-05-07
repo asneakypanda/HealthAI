@@ -38,6 +38,7 @@ I implemented a button to delete a plan if a user chooses, as well as update it 
 ## Screenshots
 
 ![Alt text](HomeScreen.png?raw=true "Home Screen")
+<img src="HomeScreen.png" width="200" />
 ![Alt text](BlankQuizScreen.png?raw=true "Blank Quiz Screen")
 ![Alt text](FilledQuizScreenOne.png?raw=true "First Half Filled Quiz")
 ![Alt text](FilledQuizScreenTwo.png?raw=true "Second Half Filled Quiz")
